@@ -1,0 +1,432 @@
+{
+  "start": "-PT24H",
+  "periodOverride": "inherit",
+  "widgets": [
+    {
+      "type": "text",
+      "x": 0,
+      "y": 0,
+      "width": 24,
+      "height": 3,
+      "properties": {
+        "markdown": "# Ivanna Producción · Monitoreo\nPlantilla académica: reemplazar IDs, bucket, ARNs y enlaces. Sin datos reales. Operaciones en sa-east-1; facturación en us-east-1.\n[Proyección mensual en AWS Budgets](https://console.aws.amazon.com/billing/home#/budgets) · Presupuesto USD 10; aviso FORECASTED al 100%."
+      }
+    },
+    {
+      "type": "alarm",
+      "x": 0,
+      "y": 3,
+      "width": 16,
+      "height": 4,
+      "properties": {
+        "title": "Estado de alarmas operativas",
+        "alarms": [
+          "arn:aws:cloudwatch:sa-east-1:REEMPLAZAR_ACCOUNT_ID:alarm:REEMPLAZAR_ALARMA_CPU_A",
+          "arn:aws:cloudwatch:sa-east-1:REEMPLAZAR_ACCOUNT_ID:alarm:REEMPLAZAR_ALARMA_RDS_ESPACIO"
+        ]
+      }
+    },
+    {
+      "type": "metric",
+      "x": 16,
+      "y": 3,
+      "width": 8,
+      "height": 4,
+      "properties": {
+        "title": "Gasto acumulado mensual estimado · USD",
+        "metrics": [
+          [
+            "AWS/Billing",
+            "EstimatedCharges",
+            "Currency",
+            "USD"
+          ]
+        ],
+        "region": "us-east-1",
+        "period": 21600,
+        "stat": "Maximum",
+        "view": "singleValue"
+      }
+    },
+    {
+      "type": "alarm",
+      "x": 0,
+      "y": 7,
+      "width": 24,
+      "height": 3,
+      "properties": {
+        "title": "Alarma de facturación · us-east-1",
+        "alarms": [
+          "arn:aws:cloudwatch:us-east-1:REEMPLAZAR_ACCOUNT_ID:alarm:REEMPLAZAR_ALARMA_COSTOS"
+        ]
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 10,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "EC2 · CPU por instancia (%)",
+        "metrics": [
+          [
+            "AWS/EC2",
+            "CPUUtilization",
+            "InstanceId",
+            "REEMPLAZAR_EC2_A",
+            {
+              "label": "CPU A"
+            }
+          ],
+          [
+            "AWS/EC2",
+            "CPUUtilization",
+            "InstanceId",
+            "REEMPLAZAR_EC2_B",
+            {
+              "label": "CPU B"
+            }
+          ]
+        ],
+        "region": "sa-east-1",
+        "period": 300,
+        "stat": "Average",
+        "view": "timeSeries"
+      }
+    },
+    {
+      "type": "metric",
+      "x": 12,
+      "y": 10,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "EC2 · Fallas de estado",
+        "metrics": [
+          [
+            "AWS/EC2",
+            "StatusCheckFailed",
+            "InstanceId",
+            "REEMPLAZAR_EC2_A"
+          ],
+          [
+            "AWS/EC2",
+            "StatusCheckFailed",
+            "InstanceId",
+            "REEMPLAZAR_EC2_B"
+          ]
+        ],
+        "region": "sa-east-1",
+        "period": 300,
+        "stat": "Maximum",
+        "view": "timeSeries"
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 16,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "EC2 · Tráfico por período (bytes)",
+        "metrics": [
+          [
+            "AWS/EC2",
+            "NetworkIn",
+            "InstanceId",
+            "REEMPLAZAR_EC2_A",
+            {
+              "label": "Entrada A"
+            }
+          ],
+          [
+            "AWS/EC2",
+            "NetworkOut",
+            "InstanceId",
+            "REEMPLAZAR_EC2_A",
+            {
+              "label": "Salida A"
+            }
+          ],
+          [
+            "AWS/EC2",
+            "NetworkIn",
+            "InstanceId",
+            "REEMPLAZAR_EC2_B",
+            {
+              "label": "Entrada B"
+            }
+          ],
+          [
+            "AWS/EC2",
+            "NetworkOut",
+            "InstanceId",
+            "REEMPLAZAR_EC2_B",
+            {
+              "label": "Salida B"
+            }
+          ]
+        ],
+        "region": "sa-east-1",
+        "period": 300,
+        "stat": "Sum",
+        "view": "timeSeries",
+        "stacked": true
+      }
+    },
+    {
+      "type": "metric",
+      "x": 12,
+      "y": 16,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "NAT · Bytes enviados por período",
+        "metrics": [
+          [
+            "AWS/NATGateway",
+            "BytesOutToDestination",
+            "NatGatewayId",
+            "REEMPLAZAR_NAT_A"
+          ],
+          [
+            "AWS/NATGateway",
+            "BytesOutToDestination",
+            "NatGatewayId",
+            "REEMPLAZAR_NAT_B"
+          ]
+        ],
+        "region": "sa-east-1",
+        "period": 300,
+        "stat": "Sum",
+        "view": "timeSeries"
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 22,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "NAT · Errores de asignación de puertos",
+        "metrics": [
+          [
+            "AWS/NATGateway",
+            "ErrorPortAllocation",
+            "NatGatewayId",
+            "REEMPLAZAR_NAT_A"
+          ],
+          [
+            "AWS/NATGateway",
+            "ErrorPortAllocation",
+            "NatGatewayId",
+            "REEMPLAZAR_NAT_B"
+          ]
+        ],
+        "region": "sa-east-1",
+        "period": 300,
+        "stat": "Sum",
+        "view": "timeSeries"
+      }
+    },
+    {
+      "type": "metric",
+      "x": 12,
+      "y": 22,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "RDS · CPU (%)",
+        "metrics": [
+          [
+            "AWS/RDS",
+            "CPUUtilization",
+            "DBInstanceIdentifier",
+            "REEMPLAZAR_RDS"
+          ]
+        ],
+        "region": "sa-east-1",
+        "period": 300,
+        "stat": "Average",
+        "view": "timeSeries"
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 28,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "RDS · Espacio libre (GiB)",
+        "metrics": [
+          [
+            "AWS/RDS",
+            "FreeStorageSpace",
+            "DBInstanceIdentifier",
+            "REEMPLAZAR_RDS",
+            {
+              "id": "free",
+              "visible": false,
+              "stat": "Minimum"
+            }
+          ],
+          [
+            {
+              "expression": "free/1073741824",
+              "id": "gib",
+              "label": "GiB libres"
+            }
+          ]
+        ],
+        "region": "sa-east-1",
+        "period": 300,
+        "stat": "Minimum",
+        "view": "timeSeries"
+      }
+    },
+    {
+      "type": "metric",
+      "x": 12,
+      "y": 28,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "S3 · Tamaño Standard (GiB) · 14 días",
+        "metrics": [
+          [
+            "AWS/S3",
+            "BucketSizeBytes",
+            "BucketName",
+            "REEMPLAZAR_BUCKET",
+            "StorageType",
+            "StandardStorage",
+            {
+              "id": "size",
+              "visible": false
+            }
+          ],
+          [
+            {
+              "expression": "size/1073741824",
+              "id": "gib",
+              "label": "GiB Standard"
+            }
+          ]
+        ],
+        "region": "sa-east-1",
+        "period": 86400,
+        "stat": "Average",
+        "view": "timeSeries",
+        "start": "-P14D"
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 34,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "S3 · Cantidad de objetos · 14 días",
+        "metrics": [
+          [
+            "AWS/S3",
+            "NumberOfObjects",
+            "BucketName",
+            "REEMPLAZAR_BUCKET",
+            "StorageType",
+            "AllStorageTypes"
+          ]
+        ],
+        "region": "sa-east-1",
+        "period": 86400,
+        "stat": "Average",
+        "view": "timeSeries",
+        "start": "-P14D"
+      }
+    },
+    {
+      "type": "metric",
+      "x": 12,
+      "y": 34,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "ALB · Targets saludables",
+        "metrics": [
+          [
+            "AWS/ApplicationELB",
+            "HealthyHostCount",
+            "LoadBalancer",
+            "REEMPLAZAR_ALB_SUFFIX",
+            "TargetGroup",
+            "REEMPLAZAR_TG_SUFFIX"
+          ]
+        ],
+        "region": "sa-east-1",
+        "period": 300,
+        "stat": "Minimum",
+        "view": "timeSeries"
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 40,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "ALB · Errores 5xx de targets",
+        "metrics": [
+          [
+            "AWS/ApplicationELB",
+            "HTTPCode_Target_5XX_Count",
+            "LoadBalancer",
+            "REEMPLAZAR_ALB_SUFFIX"
+          ]
+        ],
+        "region": "sa-east-1",
+        "period": 300,
+        "stat": "Sum",
+        "view": "timeSeries"
+      }
+    },
+    {
+      "type": "metric",
+      "x": 12,
+      "y": 40,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "API · Errores 5xx desde logs",
+        "metrics": [
+          [
+            "Ivanna/API",
+            "ErrorCount"
+          ]
+        ],
+        "region": "sa-east-1",
+        "period": 300,
+        "stat": "Sum",
+        "view": "timeSeries"
+      }
+    },
+    {
+      "type": "log",
+      "x": 0,
+      "y": 46,
+      "width": 24,
+      "height": 7,
+      "properties": {
+        "title": "API · Errores recientes",
+        "region": "sa-east-1",
+        "view": "table",
+        "query": "SOURCE '/ivanna/prod/api' | fields @timestamp, level, status, ruta, requestId, @message | filter status >= 500 and status < 600 | sort @timestamp desc | limit 20"
+      }
+    }
+  ]
+}
